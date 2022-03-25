@@ -6,7 +6,7 @@
 /*   By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:35:04 by kmoutaou          #+#    #+#             */
-/*   Updated: 2022/03/24 21:09:53 by kmoutaou         ###   ########.fr       */
+/*   Updated: 2022/03/25 14:21:36 by kmoutaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct	s_data {
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
+	t_data	image;
 	double	x_min;
 	double	x_max;
 	double	y_min;
