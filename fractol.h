@@ -6,7 +6,7 @@
 /*   By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:35:04 by kmoutaou          #+#    #+#             */
-/*   Updated: 2022/03/25 14:21:36 by kmoutaou         ###   ########.fr       */
+/*   Updated: 2022/03/26 18:57:22 by kmoutaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct	s_vars {
 	double	mouse_x;
 	double	mouse_y;
 	double	zoom;
+	int		max_i;
 }				t_vars;
 
 void    initialize(t_vars *vars);
