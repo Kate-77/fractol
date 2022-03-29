@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 22:27:36 by kmoutaou          #+#    #+#             */
-/*   Updated: 2022/03/29 23:19:42 by kmoutaou         ###   ########.fr       */
+/*   Created: 2022/03/29 14:22:19 by kmoutaou          #+#    #+#             */
+/*   Updated: 2022/03/29 23:21:58 by kmoutaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void    mandelbrot_set(t_vars *vars)
+
+void    julia_set(t_vars *vars)
 {
+    int     i = 0;
     double  cx, cy;
     int     x = 0;
     int     y = 0;
@@ -35,21 +37,21 @@ void    mandelbrot_set(t_vars *vars)
             cy= (y / (vars->height / (vars->y_max - vars->y_min)) + vars->y_min);
             zr = 0;
             zi = 0;
-            vars->i = 0;
-            while (zr*zr + zi*zi <= 4 && vars->i < vars->max_i)
+            i = 0;
+            while (zr*zr + zi*zi <= 4 && i < vars->max_i)
             {
                 tmp = zr;
                 zr = zr*zr - zi*zi + cx;
                 zi = 2 * zi * tmp + cy;                 
                 if (zr*zr + zi*zi >= 4) // ila kan kharej range or the M set => display it
                 {
-                    //clr = ft_colors(i);
+                    //clr = ft_colors();
                     //color = i * clr / vars->max_i;
                     //color = i * 0x0f6b9e / 255;
                     //r = (i % 32) * 7;
                     //g = (i % 16) * 14;
                     //b = (i % 128) * 2;
-                    //color = create_trgb(1, 255 - vars->i, 255 - vars->i, 255);
+                    //color = create_trgb(1, 255 - i, 255 - i, 255);
                     //color = (i / vars->max_i) * 255;
                     //color = 255 - i * 255 / vars->max_i;
                     //color = i * 255 / vars->max_i;
@@ -61,7 +63,7 @@ void    mandelbrot_set(t_vars *vars)
                 {
                     my_mlx_pixel_put(&vars->image, x, y, 0xFFFFFF);
                 }
-                vars->i++;
+                i++;
             }
             x++;
         }

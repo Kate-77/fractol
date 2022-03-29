@@ -6,7 +6,7 @@
 /*   By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 16:38:36 by kmoutaou          #+#    #+#             */
-/*   Updated: 2022/03/28 18:34:52 by kmoutaou         ###   ########.fr       */
+/*   Updated: 2022/03/29 23:16:35 by kmoutaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int    *colors_palette1()
+int    *colors_palette1() // this one is extra blue
 {
     static int    arr[16];
 
@@ -40,7 +40,7 @@ int    *colors_palette1()
     return (arr);
 }
 
-int    *colors_palette2()
+int    *colors_palette2() // this one is extra red
 {
     static int    arr[21];
 
@@ -61,4 +61,113 @@ int    *colors_palette2()
     arr[14] = 0x0086b5e5;
     arr[15] = 0x00d3ecf8;
     return (arr);
+}
+
+int    *colors_palette3() // this is the one (warm colors with a bit of blue and green)
+{
+    static int    arr[16];
+
+    arr[0] = 0x00ddcf99;
+    arr[1] = 0x00cca87b;
+    arr[2] = 0x00b97a60;
+    arr[3] = 0x009c524e;
+    arr[4] = 0x00774251;
+    arr[5] = 0x004b3d44;
+    arr[6] = 0x004e5463;
+    arr[7] = 0x005b7d73;
+    arr[8] = 0x008e9f7d;
+    arr[9] = 0x00645355;
+    arr[10] = 0x008c7c79;
+    arr[11] = 0x00a99c8d;
+    arr[12] = 0x007d7b62;
+    arr[13] = 0x00aaa25d;
+    arr[14] = 0x00846d59;
+    arr[15] = 0x00a88a5e;
+    return (arr);
+}
+
+
+int    *colors_palette4() // this one is warm with more orange and brown
+{
+    static int    arr[29];
+
+    arr[0] = 0x00636663;
+    arr[1] = 0x0087857c;
+    arr[2] = 0x00bcad9f;
+    arr[3] = 0x00f2b888;
+    arr[4] = 0x00eb9661;
+    arr[5] = 0x00b55945;
+    arr[6] = 0x00734c44;
+    arr[7] = 0x003d3333;
+    arr[8] = 0x007a5859;
+    arr[9] = 0x00a57855;
+    arr[10] = 0x00de9f47;
+    arr[11] = 0x00fdd179;
+    arr[12] = 0x00fee1b8;
+    arr[13] = 0x00d4c692;
+    arr[14] = 0x00a6b04f;
+    arr[15] = 0x00819447;
+    arr[16] = 0x0044702d;
+    arr[17] = 0x002f4d2f;
+    arr[18] = 0x00546756;
+    arr[19] = 0x0089a477;
+    arr[20] = 0x00a4c5af;
+    arr[21] = 0x00cae6d9;
+    arr[22] = 0x00f1f6f0;
+    arr[23] = 0x00d5d6db;
+    arr[24] = 0x00bbc3d0;
+    arr[25] = 0x0096a9c1;
+    arr[26] = 0x006c81a1;
+    arr[27] = 0x00405273;
+    arr[28] = 0x00303843;
+    return (arr);
+}
+
+int    *colors_palette5() // this one is cold
+{
+    static int    arr[8];
+
+    arr[0] = 0x009fb9cc;
+    arr[1] = 0x00679e9c;
+    arr[2] = 0x002e868c;
+    arr[3] = 0x00006e42;
+    arr[4] = 0x00173957;
+    arr[5] = 0x00072927;
+    arr[6] = 0x0008102e;
+    arr[7] = 0x00060f0d;
+    return (arr);
+}
+
+int ft_color(int keycode, t_vars *vars)
+{
+    int *colors;
+
+    if (keycode == 83)
+    {
+        colors = colors_palette1();
+        vars->color = colors[vars->i % 16];
+    }
+    else if (keycode == 84)
+    {
+        colors = colors_palette2();
+        vars->color = colors[vars->i % 21];
+    }
+    else if (keycode == 85)
+    {
+        colors = colors_palette3();
+        vars->color = colors[vars->i % 16];
+    }
+    else if (keycode == 86)
+    {
+        colors = colors_palette4();
+        vars->color = colors[vars->i % 29];
+    }
+    else if (keycode == 87)
+    {
+        colors = colors_palette5();
+        vars->color = colors[vars->i % 8];
+    }
+    else
+        vars->color = create_trgb(1, 255 - vars->i, 255 - vars->i, 255);
+    return (vars->color);
 }

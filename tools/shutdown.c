@@ -6,11 +6,10 @@
 /*   By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 18:38:37 by kmoutaou          #+#    #+#             */
-/*   Updated: 2022/03/28 18:24:54 by kmoutaou         ###   ########.fr       */
+/*   Updated: 2022/03/29 15:19:06 by kmoutaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
 #include "../includes/fractol.h"
 
 int shutdown(int keycode, t_vars *vars)
