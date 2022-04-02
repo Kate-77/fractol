@@ -6,7 +6,7 @@
 /*   By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:28:26 by kmoutaou          #+#    #+#             */
-/*   Updated: 2022/03/28 18:30:15 by kmoutaou         ###   ########.fr       */
+/*   Updated: 2022/04/02 01:10:13 by kmoutaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,20 @@ int zooming(int keycode, int x, int y, t_vars *vars)
     	vars->zoom = 1.5;
     	applyZoom(vars);
     	mlx_clear_window(vars->mlx, vars->win);
-    	mandelbrot_set(vars);
+    	if (vars->set == 1)
+            mandelbrot_set(vars);
+        else if (vars->set == 2)
+            julia_set(vars); 
 	}
     if (keycode == 5)
     {
         vars->zoom = 1.0/1.5;
         applyZoom(vars);
         mlx_clear_window(vars->mlx, vars->win);
-        mandelbrot_set(vars);
+        if (vars->set == 1)
+            mandelbrot_set(vars);
+        else if (vars->set == 2)
+            julia_set(vars);
     }
     return (0);
 }

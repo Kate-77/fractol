@@ -6,7 +6,7 @@
 #    By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/28 18:21:07 by kmoutaou          #+#    #+#              #
-#    Updated: 2022/03/28 18:52:04 by kmoutaou         ###   ########.fr        #
+#    Updated: 2022/04/02 03:12:50 by kmoutaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,11 @@ NAME		= fractol
 
 CC			= cc
 
-FLAGS		= -Wall -Wextra -Werror
+FLAGS		= -Wall -Wextra -Werror -lmlx -framework OpenGL -framework appKit
 
-SRCS		= sets/mandelbrot.c sets/burningship.c tools/shutdown.c \
-			  tools/coloring.c main.c
+SRCS		= sets/mandelbrot.c sets/julia.c tools/shutdown.c \
+			  tools/coloring.c tools/drawing.c tools/ft_putstr.c main.c \
+			  tools/move.c tools/initialize.c tools/zooming.c tools/strcmp.c
 
 OBJS		= $(SRCS:.c=.o)
 

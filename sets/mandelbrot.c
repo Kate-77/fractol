@@ -6,7 +6,7 @@
 /*   By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:27:36 by kmoutaou          #+#    #+#             */
-/*   Updated: 2022/03/29 23:19:42 by kmoutaou         ###   ########.fr       */
+/*   Updated: 2022/04/02 02:01:26 by kmoutaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,15 @@ void    mandelbrot_set(t_vars *vars)
     double  zr = 0;
     double  zi = 0;
     double  tmp = 0;
-    int     color;
-    // int     r,g,b;
-    // int     clr;
-    int     *colors;
 
-    colors = colors_palette4();
+
     while (y < vars->height)
     {
         x = 0;
         while (x < vars->width)
         {
-            cx= (x / (vars->width / (vars->x_max - vars->x_min)) + vars->x_min);
-            cy= (y / (vars->height / (vars->y_max - vars->y_min)) + vars->y_min);
+            cx= (x / (vars->width / (vars->x_max - vars->x_min)) + vars->x_min) + vars->move_x;
+            cy= (y / (vars->height / (vars->y_max - vars->y_min)) + vars->y_min) + vars->move_y;
             zr = 0;
             zi = 0;
             vars->i = 0;
@@ -41,21 +37,10 @@ void    mandelbrot_set(t_vars *vars)
                 tmp = zr;
                 zr = zr*zr - zi*zi + cx;
                 zi = 2 * zi * tmp + cy;                 
-                if (zr*zr + zi*zi >= 4) // ila kan kharej range or the M set => display it
+                if (zr*zr + zi*zi >= 4)
                 {
-                    //clr = ft_colors(i);
-                    //color = i * clr / vars->max_i;
-                    //color = i * 0x0f6b9e / 255;
-                    //r = (i % 32) * 7;
-                    //g = (i % 16) * 14;
-                    //b = (i % 128) * 2;
-                    //color = create_trgb(1, 255 - vars->i, 255 - vars->i, 255);
-                    //color = (i / vars->max_i) * 255;
-                    //color = 255 - i * 255 / vars->max_i;
-                    //color = i * 255 / vars->max_i;
-                    //printf("color = %x\n", color);
-                    color = colors[vars->i % 29];
-                    my_mlx_pixel_put(&vars->image, x, y, color);
+                    vars->color = vars->colors[vars->i % vars->palette];
+                    my_mlx_pixel_put(&vars->image, x, y, vars->color);
                 }
                 else
                 {

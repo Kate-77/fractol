@@ -6,7 +6,7 @@
 /*   By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:35:04 by kmoutaou          #+#    #+#             */
-/*   Updated: 2022/03/29 23:22:46 by kmoutaou         ###   ########.fr       */
+/*   Updated: 2022/04/02 04:44:17 by kmoutaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include <string.h>
+#include <unistd.h>
 
 typedef struct	s_data {
 	void	*img;
@@ -41,8 +42,18 @@ typedef struct	s_vars {
 	int		max_i;
 	int		i;
 	int		color;
+	double	cr;
+	double	ci;
+	double	zr;
+	double	zi;
+	int		palette;
+	int		*colors;
+	int		set;
+	double	move_x;
+	double	move_y;
 }				t_vars;
 
+void	ft_start(t_vars *vars);
 void    initialize(t_vars *vars);
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		shutdown(int keycode, t_vars *vars);
@@ -59,10 +70,16 @@ int		mouse_hook(int x, int y, t_vars *vars);
 int		*colors_palette3();
 int		*colors_palette4();
 int		*colors_palette5();
-int		ft_color(int keycode, t_vars *vars);
-void    julia1_set(t_vars *vars);
-void    julia2_set(t_vars *vars);
-void    julia3_set(t_vars *vars);
-void    julia4_set(t_vars *vars);
+int		coloring(int keycode, t_vars *vars);
+void    julia_set(t_vars *vars);
+void    get_c1(t_vars *vars);
+void    get_c2(t_vars *vars);
+void    get_c3(t_vars *vars);
+void    get_c4(t_vars *vars);
+void	ft_putstr(char *s, int fd);
+void	move(int keycode, t_vars *vars);
+int		ft_strcmp(char *s1, char *s2);
+size_t	ft_strlen(char *str);
+int		ft_strncmp(char *s1, char *s2, size_t n);
 
 #endif

@@ -6,18 +6,13 @@
 /*   By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 16:38:36 by kmoutaou          #+#    #+#             */
-/*   Updated: 2022/03/29 23:16:35 by kmoutaou         ###   ########.fr       */
+/*   Updated: 2022/04/02 02:02:48 by kmoutaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-int    *colors_palette1() // this one is extra blue
+int    *colors_palette1()
 {
     static int    arr[16];
 
@@ -40,7 +35,7 @@ int    *colors_palette1() // this one is extra blue
     return (arr);
 }
 
-int    *colors_palette2() // this one is extra red
+int    *colors_palette2()
 {
     static int    arr[21];
 
@@ -63,7 +58,7 @@ int    *colors_palette2() // this one is extra red
     return (arr);
 }
 
-int    *colors_palette3() // this is the one (warm colors with a bit of blue and green)
+int    *colors_palette3()
 {
     static int    arr[16];
 
@@ -87,7 +82,7 @@ int    *colors_palette3() // this is the one (warm colors with a bit of blue and
 }
 
 
-int    *colors_palette4() // this one is warm with more orange and brown
+int    *colors_palette4()
 {
     static int    arr[29];
 
@@ -123,7 +118,7 @@ int    *colors_palette4() // this one is warm with more orange and brown
     return (arr);
 }
 
-int    *colors_palette5() // this one is cold
+int    *colors_palette5()
 {
     static int    arr[8];
 
@@ -138,36 +133,58 @@ int    *colors_palette5() // this one is cold
     return (arr);
 }
 
-int ft_color(int keycode, t_vars *vars)
+int coloring(int keycode, t_vars *vars)
 {
-    int *colors;
-
     if (keycode == 83)
     {
-        colors = colors_palette1();
-        vars->color = colors[vars->i % 16];
+        vars->palette = 16; 
+        vars->colors = colors_palette1();
+        mlx_clear_window(vars->mlx, vars->win);
+        if (vars->set == 1)
+            mandelbrot_set(vars);
+        else if (vars->set == 2)
+            julia_set(vars); 
     }
     else if (keycode == 84)
     {
-        colors = colors_palette2();
-        vars->color = colors[vars->i % 21];
+        vars->palette = 21;
+        vars->colors = colors_palette2();
+        mlx_clear_window(vars->mlx, vars->win);
+        if (vars->set == 1)
+            mandelbrot_set(vars);
+        else if (vars->set == 2)
+            julia_set(vars); 
     }
     else if (keycode == 85)
     {
-        colors = colors_palette3();
-        vars->color = colors[vars->i % 16];
+        vars->palette = 16; 
+        vars->colors = colors_palette3();
+        mlx_clear_window(vars->mlx, vars->win);
+        if (vars->set == 1)
+            mandelbrot_set(vars);
+        else if (vars->set == 2)
+            julia_set(vars); 
     }
     else if (keycode == 86)
     {
-        colors = colors_palette4();
-        vars->color = colors[vars->i % 29];
+        vars->palette = 29; 
+        vars->colors = colors_palette4();
+        mlx_clear_window(vars->mlx, vars->win);
+        if (vars->set == 1)
+            mandelbrot_set(vars);
+        else if (vars->set == 2)
+            julia_set(vars); 
     }
     else if (keycode == 87)
     {
-        colors = colors_palette5();
-        vars->color = colors[vars->i % 8];
+        vars->palette = 8; 
+        vars->colors = colors_palette5();
+        mlx_clear_window(vars->mlx, vars->win);
+        if (vars->set == 1)
+            mandelbrot_set(vars);
+        else if (vars->set == 2)
+            julia_set(vars);
     }
-    else
-        vars->color = create_trgb(1, 255 - vars->i, 255 - vars->i, 255);
+    move(keycode, vars);
     return (vars->color);
 }
