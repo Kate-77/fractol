@@ -6,7 +6,7 @@
 /*   By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:35:04 by kmoutaou          #+#    #+#             */
-/*   Updated: 2022/04/05 03:27:19 by kmoutaou         ###   ########.fr       */
+/*   Updated: 2022/04/06 03:02:57 by kmoutaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <mlx.h>
 # include <stdlib.h>
 # include <math.h>
-# include <string.h>
 # include <unistd.h>
 
 typedef struct s_data {
@@ -60,19 +59,17 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		shutdown(int keycode, t_vars *vars);
 int		destroy(t_vars *vars);
 void	mandelbrot_set(t_vars *vars);
+void	julia_set(t_vars *vars);
 int		zooming(int keycode, int x, int y, t_vars *vars);
 void	apply_zoom(t_vars *vars);
 double	interpolate(double start, double end, double interpolation);
+int		mouse_hook(int x, int y, t_vars *vars);
 int		*colors_palette1(void);
 int		*colors_palette2(void);
-void	burningship_set(t_vars *vars);
-int		mouse_hook(int x, int y, t_vars *vars);
 int		*colors_palette3(void);
 int		*colors_palette4(void);
 int		*colors_palette5(void);
-int		*colors_palette6(void);
 int		coloring(int keycode, t_vars *vars);
-void	julia_set(t_vars *vars);
 void	get_c1(t_vars *vars);
 void	get_c2(t_vars *vars);
 void	get_c3(t_vars *vars);
@@ -85,5 +82,7 @@ int		ft_strncmp(char *s1, char *s2, size_t n);
 void	manage_sets(t_vars *vars);
 void	calcul_jul(t_vars *vars, int x, int y, double tmp);
 void	calcul_man(t_vars *vars, int x, int y, double tmp);
+void	manage_julia(char **argv, t_vars *vars);
+void	manage(char **argv, t_vars *vars);
 
 #endif

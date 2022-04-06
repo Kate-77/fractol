@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   coloring1.c                                        :+:      :+:    :+:   */
+/*   coloring1_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 16:38:36 by kmoutaou          #+#    #+#             */
-/*   Updated: 2022/04/06 00:57:55 by kmoutaou         ###   ########.fr       */
+/*   Updated: 2022/04/06 01:05:32 by kmoutaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "../includes/fractol_bonus.h"
 
 int	*colors_palette1(void)
 {
@@ -37,7 +37,7 @@ int	*colors_palette1(void)
 
 int	*colors_palette2(void)
 {
-	static int	arr[16];
+	static int	arr[21];
 
 	arr[0] = 0x00990000;
 	arr[1] = 0x006a0303;

@@ -6,13 +6,13 @@
 /*   By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:43:45 by kmoutaou          #+#    #+#             */
-/*   Updated: 2022/04/04 00:34:46 by kmoutaou         ###   ########.fr       */
+/*   Updated: 2022/04/06 00:44:09 by kmoutaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol_bonus.h"
 
-void	calcul(t_vars *vars, int x, int y, int tmp)
+void	calcul_jul(t_vars *vars, int x, int y, double tmp)
 {
 	while (x < vars->width)
 	{
@@ -41,17 +41,21 @@ void	calcul(t_vars *vars, int x, int y, int tmp)
 	return ;
 }
 
-void    julia_set(t_vars *vars)
+void	julia_set(t_vars *vars)
 {
-    int     x = 0;
-    int     y = 0;
-    double  tmp = 0;
+	int		x;
+	int		y;
+	double	tmp;
 
-    while (y < vars->height)
-    {
-        x = 0;
-        calcul(vars, x, y, tmp);
-        y++;
-    }
-    mlx_put_image_to_window(vars->mlx, vars->win, vars->image.img, 0, 0);
+	x = 0;
+	y = 0;
+	tmp = 0;
+	while (y < vars->height)
+	{
+		x = 0;
+		calcul_jul(vars, x, y, tmp);
+		y++;
+	}
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->image.img, 0, 0);
+	return ;
 }

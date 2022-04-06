@@ -6,7 +6,7 @@
 /*   By: kmoutaou <kmoutaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 21:58:30 by kmoutaou          #+#    #+#             */
-/*   Updated: 2022/04/05 03:29:14 by kmoutaou         ###   ########.fr       */
+/*   Updated: 2022/04/06 03:31:31 by kmoutaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void	manage_julia(char **argv, t_vars *vars)
 		get_c4(vars);
 		julia_set(vars);
 	}
+	else
+	{
+		ft_putstr(vars->msg, 1);
+		exit(0);
+	}
 	return ;
 }
 
@@ -47,6 +52,11 @@ void	manage(char **argv, t_vars *vars)
 	}
 	else if (ft_strncmp(argv[1], "julia", 5) == 0)
 		manage_julia(argv, vars);
+	else
+	{
+		ft_putstr(vars->msg, 1);
+		exit(0);
+	}
 	return ;
 }
 
